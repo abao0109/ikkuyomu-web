@@ -1,0 +1,672 @@
+[
+ {
+  "n": 1,
+  "unit": "不用變化就能說",
+  "title": "自我介紹:「我是…」「我不是…」",
+  "ids": [
+   "wa-topic",
+   "mo-also",
+   "desu-da",
+   "dewa-nai",
+   "ka-question"
+  ],
+  "core": null
+ },
+ {
+  "n": 2,
+  "unit": "不用變化就能說",
+  "title": "這個、那個、哪裡",
+  "ids": [
+   "kore-sore-are-dore",
+   "kono-sono-ano-dono",
+   "koko-soko-asoko-doko",
+   "kou-sou-aa-dou"
+  ],
+  "core": null
+ },
+ {
+  "n": 3,
+  "unit": "不用變化就能說",
+  "title": "「…的」和「有…」",
+  "ids": [
+   "no-possessive",
+   "ga-subject",
+   "wa-ga-contrast",
+   "ga-iru-aru"
+  ],
+  "core": null
+ },
+ {
+  "n": 4,
+  "unit": "不用變化就能說",
+  "title": "形容東西:好吃、很安靜",
+  "ids": [
+   "i-adj-katsuyou",
+   "na-adj-shushoku",
+   "ku-ni-fukushi",
+   "konna-sonna-anna-donna"
+  ],
+  "core": null
+ },
+ {
+  "n": 5,
+  "unit": "動詞入門與て形",
+  "title": "動詞怎麼變 ①:ます",
+  "ids": [
+   "core:verb-groups"
+  ],
+  "core": "五段/一段/する・くる 怎麼分、辭書形↔ます形"
+ },
+ {
+  "n": 6,
+  "unit": "動詞入門與て形",
+  "title": "有禮貌地說「做／不做／一起做吧」",
+  "ids": [
+   "masu",
+   "masen",
+   "mashou",
+   "mashou-ka-masen-ka"
+  ],
+  "core": null
+ },
+ {
+  "n": 7,
+  "unit": "動詞入門與て形",
+  "title": "在哪裡做、跟誰做、去哪裡",
+  "ids": [
+   "wo-object",
+   "ni-time-place",
+   "he-direction",
+   "de-place-means",
+   "to-and-with"
+  ],
+  "core": null
+ },
+ {
+  "n": 8,
+  "unit": "動詞入門與て形",
+  "title": "從幾點到幾點、去做…",
+  "ids": [
+   "ya-nado",
+   "kara-made",
+   "ni-purpose",
+   "ni-frequency"
+  ],
+  "core": null
+ },
+ {
+  "n": 9,
+  "unit": "動詞入門與て形",
+  "title": "「變得…」「什麼都…」",
+  "ids": [
+   "ku-ni-naru",
+   "ku-ni-suru",
+   "gimoushi-ka",
+   "gimoushi-mo",
+   "konna-sonna-anna-ni",
+   "dou-iu"
+  ],
+  "core": null
+ },
+ {
+  "n": 10,
+  "unit": "動詞入門與て形",
+  "title": "動詞怎麼變 ②:動漫最常聽的 ない・た",
+  "ids": [
+   "core:plain-form"
+  ],
+  "core": "ない形・た形・なかった;普通形 vs 丁寧形"
+ },
+ {
+  "n": 11,
+  "unit": "動詞入門與て形",
+  "title": "名詞和形容詞怎麼接在一起",
+  "ids": [
+   "core:connection"
+  ],
+  "core": "V普通形/イA/ナAな/Nの 接續表;だ・な・の・で・じゃない・だった"
+ },
+ {
+  "n": 12,
+  "unit": "動詞入門與て形",
+  "title": "動詞怎麼變 ③:て",
+  "ids": [
+   "core:te-form-make"
+  ],
+  "core": "て形・た形音便:う/つ/る→って、む/ぶ/ぬ→んで、く→いて、ぐ→いで、す→して、行く→行って"
+ },
+ {
+  "n": 13,
+  "unit": "動詞入門與て形",
+  "title": "「請…」「不要…」「先…再…」",
+  "ids": [
+   "te-form-conjunction",
+   "te-kara",
+   "te-kudasai",
+   "naide-kudasai",
+   "nai-de-request",
+   "te-chorai-choudai"
+  ],
+  "core": null
+ },
+ {
+  "n": 14,
+  "unit": "動詞入門與て形",
+  "title": "「正在…」「已經…好了」",
+  "ids": [
+   "te-iru",
+   "shitte-iru",
+   "te-aru",
+   "te-iru-vs-te-aru",
+   "intransitive-transitive-pairs",
+   "mada-mou"
+  ],
+  "core": null
+ },
+ {
+  "n": 15,
+  "unit": "動詞入門與て形",
+  "title": "句尾的 ね・よ・んだ:語氣差在哪",
+  "ids": [
+   "ne-yo-na",
+   "no-da-nda",
+   "no-sentence-ending",
+   "kana-kashira"
+  ],
+  "core": null
+ },
+ {
+  "n": 16,
+  "unit": "動詞入門與て形",
+  "title": "「他說…」「我覺得…」",
+  "ids": [
+   "to-iu",
+   "to-omou",
+   "tte-quotation",
+   "to-iu-koto-wa"
+  ],
+  "core": null
+ },
+ {
+  "n": 17,
+  "unit": "動詞入門與て形",
+  "title": "「我想要…」",
+  "ids": [
+   "tai",
+   "hoshii",
+   "garu"
+  ],
+  "core": null
+ },
+ {
+  "n": 18,
+  "unit": "動詞入門與て形",
+  "title": "比較:比…更、最…、太…了",
+  "ids": [
+   "yori-hou-ga",
+   "dochira-ga-ichiban",
+   "hodo-nai",
+   "to-onaji",
+   "sugiru"
+  ],
+  "core": null
+ },
+ {
+  "n": 19,
+  "unit": "動詞入門與て形",
+  "title": "猜測:大概、說不定、應該",
+  "ids": [
+   "darou-deshou",
+   "kamo-shirenai",
+   "hazu-da",
+   "kanarazu-kitto-tabun",
+   "ka-to-omou"
+  ],
+  "core": null
+ },
+ {
+  "n": 20,
+  "unit": "動詞入門與て形",
+  "title": "因為…、可是…、明明…",
+  "ids": [
+   "kara-node",
+   "ga-kedo",
+   "noni",
+   "shikashi-keredomo-ga",
+   "datte-dakara"
+  ],
+  "core": null
+ },
+ {
+  "n": 21,
+  "unit": "動詞入門與て形",
+  "title": "…的時候、之前、之後、一邊…一邊…",
+  "ids": [
+   "toki",
+   "mae-ni",
+   "ato-de",
+   "nagara",
+   "tari-tari-suru"
+  ],
+  "core": null
+ },
+ {
+  "n": 22,
+  "unit": "て形延伸",
+  "title": "「糟了」「先準備好」「試試看」",
+  "ids": [
+   "te-shimau",
+   "te-oku",
+   "te-miru",
+   "te-iku-kuru",
+   "te-iku",
+   "te-kuru"
+  ],
+  "core": null
+ },
+ {
+  "n": 23,
+  "unit": "て形延伸",
+  "title": "「正要…」「就這樣…」「開始／繼續…」",
+  "ids": [
+   "tokoro-da",
+   "ta-mama",
+   "hajimeru",
+   "owaru",
+   "tsuzukeru",
+   "dasu"
+  ],
+  "core": null
+ },
+ {
+  "n": 24,
+  "unit": "て形延伸",
+  "title": "可以…嗎、不可以、一定要",
+  "ids": [
+   "te-mo-ii",
+   "te-wa-ikenai",
+   "nakute-mo-ii",
+   "nakereba-naranai",
+   "koto-wa-nai",
+   "te-mo-ii-question"
+  ],
+  "core": null
+ },
+ {
+  "n": 25,
+  "unit": "て形延伸",
+  "title": "給、收、幫我做",
+  "ids": [
+   "ageru-kureru-morau",
+   "te-kureru",
+   "te-itadakenai-deshou-ka",
+   "te-kureru-imperative-kure",
+   "te-hoshii"
+  ],
+  "core": null
+ },
+ {
+  "n": 26,
+  "unit": "て形延伸",
+  "title": "「謝謝你…」「都怪…」「託你的福」",
+  "ids": [
+   "te-reason",
+   "naide-vs-nakute",
+   "tame-ni-reason",
+   "okage-de-sei-de",
+   "te-sumimasen"
+  ],
+  "core": null
+ },
+ {
+  "n": 27,
+  "unit": "て形延伸",
+  "title": "「他叫我…」「聽說…」",
+  "ids": [
+   "to-itta",
+   "you-ni-iu",
+   "to-kiku-hearsay",
+   "ni-yoru-to-ni-yotte"
+  ],
+  "core": null
+ },
+ {
+  "n": 28,
+  "unit": "判斷・條件・計畫",
+  "title": "「好像…」「聽說…」「看起來快要…」",
+  "ids": [
+   "sou-da-appearance",
+   "sou-da-negative",
+   "sou-da-hearsay",
+   "rashii",
+   "you-da-mitai-da",
+   "marude-youda"
+  ],
+  "core": null
+ },
+ {
+  "n": 29,
+  "unit": "判斷・條件・計畫",
+  "title": "「看起來…」「感覺…」",
+  "ids": [
+   "mieru-appearance",
+   "toori-ni",
+   "ki-ga-suru",
+   "ga-suru-sensation"
+  ],
+  "core": null
+ },
+ {
+  "n": 30,
+  "unit": "判斷・條件・計畫",
+  "title": "如果…:たら・と・ば・なら",
+  "ids": [
+   "tara",
+   "to-conditional",
+   "ba-conditional",
+   "nara-conditional",
+   "moshimo-tara"
+  ],
+  "core": null
+ },
+ {
+  "n": 31,
+  "unit": "判斷・條件・計畫",
+  "title": "給建議:最好…、…就好了",
+  "ids": [
+   "ta-hou-ga-ii",
+   "ba-ii-tara-ii",
+   "tara-dou",
+   "tara-ii-noni",
+   "to-ii-desu-ne"
+  ],
+  "core": null
+ },
+ {
+  "n": 32,
+  "unit": "判斷・條件・計畫",
+  "title": "就算…也…",
+  "ids": [
+   "te-mo-concessive",
+   "ikura-temo",
+   "question-word-temo",
+   "tatoe-temo",
+   "te-kara-de-nai-to",
+   "te-wa-condition"
+  ],
+  "core": null
+ },
+ {
+  "n": 33,
+  "unit": "判斷・條件・計畫",
+  "title": "做過…、會…、能…",
+  "ids": [
+   "ta-koto-ga-aru",
+   "koto-ga-aru-occasion",
+   "koto-ga-dekiru",
+   "potential-form",
+   "mieru-kikoeru"
+  ],
+  "core": null
+ },
+ {
+  "n": 34,
+  "unit": "判斷・條件・計畫",
+  "title": "打算…、要…了",
+  "ids": [
+   "volitional-form",
+   "volitional-to-omou",
+   "volitional-to-suru",
+   "tsumori",
+   "yotei-da"
+  ],
+  "core": null
+ },
+ {
+  "n": 35,
+  "unit": "判斷・條件・計畫",
+  "title": "決定…、變得會…",
+  "ids": [
+   "koto-ni-suru",
+   "koto-ni-naru",
+   "you-ni-suru",
+   "you-ni-naru"
+  ],
+  "core": null
+ },
+ {
+  "n": 36,
+  "unit": "判斷・條件・計畫",
+  "title": "為了…、代替…、沒…就…",
+  "ids": [
+   "tame-ni-purpose",
+   "you-ni-purpose",
+   "noni-purpose",
+   "kawari-ni",
+   "zu-ni",
+   "naide-fuzoku"
+  ],
+  "core": null
+ },
+ {
+  "n": 37,
+  "unit": "判斷・條件・計畫",
+  "title": "趁…、在…之前、剛…完",
+  "ids": [
+   "aida-aidani",
+   "uchi-ni",
+   "made-vs-madeni",
+   "bakari-da-just-did",
+   "adverb-mousugu-sakki"
+  ],
+  "core": null
+ },
+ {
+  "n": 38,
+  "unit": "動詞變身與細節",
+  "title": "被…、讓別人…",
+  "ids": [
+   "passive-form",
+   "particle-ni-agent",
+   "causative-form",
+   "causative-passive-form",
+   "sasete-itadaku-morau"
+  ],
+  "core": null
+ },
+ {
+  "n": 39,
+  "unit": "動詞變身與細節",
+  "title": "命令和禁止:給我…、不准…",
+  "ids": [
+   "imperative-form",
+   "prohibitive-form",
+   "nasai",
+   "koto-imperative"
+  ],
+  "core": null
+ },
+ {
+  "n": 40,
+  "unit": "動詞變身與細節",
+  "title": "動詞怎麼變 ④:所有變化一張表",
+  "ids": [
+   "core:conjugation-table"
+  ],
+  "core": "可能・受身・使役・意向・命令・ば形 一張表對照"
+ },
+ {
+  "n": 41,
+  "unit": "動詞變身與細節",
+  "title": "「…這件事」「…的方法」",
+  "ids": [
+   "no-koto-nominalizer",
+   "kata",
+   "no-substitute",
+   "no-wa-ga-cleft",
+   "sa-nominalizer"
+  ],
+  "core": null
+ },
+ {
+  "n": 42,
+  "unit": "動詞變身與細節",
+  "title": "只有、大約、容易／難",
+  "ids": [
+   "dake-shika",
+   "bakari-only",
+   "kurai-gurai-goro",
+   "kurai-gurai-degree",
+   "zutsu",
+   "yasui-nikui"
+  ],
+  "core": null
+ },
+ {
+  "n": 43,
+  "unit": "動詞變身與細節",
+  "title": "完全不…、絕對不…、終於",
+  "ids": [
+   "amari-zenzen-nai",
+   "kesshite-nai",
+   "nakanaka-nai",
+   "masaka-nai",
+   "adverb-yatto-toutou",
+   "adverb-kitto-zehi"
+  ],
+  "core": null
+ },
+ {
+  "n": 44,
+  "unit": "動詞變身與細節",
+  "title": "又…又…、例如",
+  "ids": [
+   "mo-mo",
+   "toka",
+   "shi",
+   "tatoeba"
+  ],
+  "core": null
+ },
+ {
+  "n": 45,
+  "unit": "動詞變身與細節",
+  "title": "然後、而且、也就是說",
+  "ids": [
+   "sorede-soredemo-soreni",
+   "shikamo",
+   "suruto",
+   "tsumari",
+   "mata-wa-soretomo",
+   "sou-ieba"
+  ],
+  "core": null
+ },
+ {
+  "n": 46,
+  "unit": "動詞變身與細節",
+  "title": "常見字的其他用法:で・から・を・と",
+  "ids": [
+   "particle-de-cause-material",
+   "particle-kara-material",
+   "particle-o-motion",
+   "particle-to-reciprocal",
+   "particle-wa-contrast",
+   "ni-tsuite"
+  ],
+  "core": null
+ },
+ {
+  "n": 47,
+  "unit": "動詞變身與細節",
+  "title": "連…都、…之類的、…什麼的",
+  "ids": [
+   "datte-even",
+   "demo-suggestion",
+   "made-extreme",
+   "nanka-nante"
+  ],
+  "core": null
+ },
+ {
+  "n": 48,
+  "unit": "動詞變身與細節",
+  "title": "是不是…、知不知道…",
+  "ids": [
+   "ka-dou-ka",
+   "ka-indirect-question",
+   "ka-shirimasen-ga",
+   "question-word-demo-ii",
+   "kai-dai"
+  ],
+  "core": null
+ },
+ {
+  "n": 49,
+  "unit": "動詞變身與細節",
+  "title": "常用說法:注意到、趕上、有用",
+  "ids": [
+   "ki-ga-tsuku",
+   "ki-ni-iru-ki-ni-suru",
+   "ma-ni-au",
+   "yaku-ni-tatsu",
+   "suru-cost-time"
+  ],
+  "core": null
+ },
+ {
+  "n": 50,
+  "unit": "動詞變身與細節",
+  "title": "「太好了」「…得不得了」「難怪」",
+  "ids": [
+   "te-yokatta",
+   "te-shikataganai",
+   "kashira-mon-kana",
+   "mono-da-obligation-nature",
+   "wake-da"
+  ],
+  "core": null
+ },
+ {
+  "n": 51,
+  "unit": "敬語",
+  "title": "對上司、客人說話 ①:抬高對方",
+  "ids": [
+   "keigo-sonkeigo-form",
+   "keigo-sonkeigo-special",
+   "keigo-sonkeigo-passive",
+   "keigo-sonkeigo-request"
+  ],
+  "core": null
+ },
+ {
+  "n": 52,
+  "unit": "敬語",
+  "title": "對上司、客人說話 ②:放低自己",
+  "ids": [
+   "keigo-kenjougo-form",
+   "keigo-kenjougo-special",
+   "keigo-orimasu",
+   "keigo-teineigo-degozaimasu"
+  ],
+  "core": null
+ },
+ {
+  "n": 53,
+  "unit": "考前總複習",
+  "title": "考前總複習:容易搞混的一次整理",
+  "ids": [
+   "core:review-grammar"
+  ],
+  "core": "總複習:全部 231 句型按易混淆組對照(そうだ×2、ために×2、のに×2、ように…),每組配動漫例句+練習"
+ },
+ {
+  "n": 54,
+  "unit": "考前總複習",
+  "title": "N4 模擬考+逐題解析",
+  "ids": [
+   "core:mock-exam"
+  ],
+  "core": "N4 模擬考全題型:文字語彙(讀音/表記/文脈/言い換え/用法)+文法(形式/重組/文章)+讀解+聽解(用動漫原聲),全部原創題,附逐題解析"
+ }
+]
