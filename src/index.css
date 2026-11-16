@@ -391,6 +391,43 @@ a {
   font-size: 14px;
 }
 
+.example-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+@media (min-width: 680px) {
+  .example-body {
+    grid-template-columns: 1fr 240px;
+  }
+}
+
+.example-clip {
+  background: var(--sticky);
+  border: 1.5px solid var(--apricot);
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.example-clip video {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  background: #2b211a;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.example-clip-cap {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 4px;
+}
+
 .practice-box {
   border-top: 1.5px dashed var(--border);
   padding-top: 12px;

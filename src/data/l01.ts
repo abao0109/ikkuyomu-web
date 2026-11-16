@@ -8,6 +8,7 @@ export interface PracticeQ {
 export interface ExampleItem {
   clip: string;
   source: string;
+  episode?: string;
   ja: string;
   kana: string;
   zh: string;
@@ -81,6 +82,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "iruma",
     source: "入間同學入魔了",
+    episode: "第1話",
     ja: "ここは魔界だ",
     kana: "ここは まかい だ",
     zh: "這裡是魔界",
@@ -95,6 +97,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "eren",
     source: "進擊的巨人",
+    episode: "第80話",
     ja: "エレンは味方だ",
     kana: "エレン は みかた だ",
     zh: "艾連是同伴",
@@ -123,6 +126,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "maseki",
     source: "無職轉生",
+    episode: "第2話",
     ja: "それは魔石です",
     kana: "それ は ませき です",
     zh: "那是魔石",
@@ -137,6 +141,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "joudan",
     source: "無職轉生",
+    episode: "第5話",
     ja: "これは冗談です",
     kana: "これ は じょうだん です",
     zh: "這是開玩笑的",
@@ -165,6 +170,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "e",
     source: "進擊的巨人",
+    episode: "第56話",
     ja: "これは絵ではない",
     kana: "これ は え ではない",
     zh: "這不是畫",
@@ -179,6 +185,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "akutou",
     source: "無職轉生",
+    episode: "第10話",
     ja: "やはり悪党か",
     kana: "やはり あくとう か",
     zh: "果然是壞人嗎",
@@ -193,6 +200,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "dare",
     source: "Re:從零開始",
+    episode: "第4期 第19話",
     ja: "あなたは誰ですか",
     kana: "あなた は だれ です か",
     zh: "你是誰？",
@@ -207,6 +215,7 @@ export const L01_EXAMPLES: ExampleItem[] = [
   {
     clip: "douiken",
     source: "歡迎來到實力至上主義的教室",
+    episode: "2期 第1話",
     ja: "僕も同意見です",
     kana: "ぼく も どういけん です",
     zh: "我也是同樣的意見",

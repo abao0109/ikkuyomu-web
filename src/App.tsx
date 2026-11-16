@@ -191,19 +191,31 @@ function Lesson1Page({ onBack }: { onBack: () => void }) {
           {L01_EXAMPLES.map((ex, idx) => (
             <div key={ex.clip} className="card example-card">
               <div className="example-head">
-                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
                   <span className="pill pill-accent">例句 {idx + 1}</span>
-                  <span className="pill pill-apricot">{ex.source}</span>
+                  <span className="pill pill-apricot">
+                    {ex.source}
+                    {ex.episode ? ` · ${ex.episode}` : ""}
+                  </span>
                   <span className="pill">{ex.pattern}</span>
                 </div>
                 <button className="btn btn-sm" onClick={() => playClip(audioRef, ex.clip)}>
                   🔊 聽原聲
                 </button>
               </div>
-              <div>
-                <div className="example-ja ja">{ex.ja}</div>
-                <div className="example-kana ja">{ex.kana}</div>
-                <div style={{ fontWeight: 600, marginTop: 4 }}>{ex.zh}</div>
+              <div className="example-body">
+                <div>
+                  <div className="example-ja ja">{ex.ja}</div>
+                  <div className="example-kana ja">{ex.kana}</div>
+                  <div style={{ fontWeight: 600, marginTop: 4 }}>{ex.zh}</div>
+                </div>
+                <div className="example-clip">
+                  <video src={`/video/l01/${ex.clip}.mp4`} controls playsInline preload="metadata" />
+                  <div className="example-clip-cap">
+                    {ex.source}
+                    {ex.episode ? ` ${ex.episode}` : ""}
+                  </div>
+                </div>
               </div>
               <div className="practice-box">
                 <div style={{ fontSize: 12, fontWeight: 700, color: "var(--accent)", marginBottom: 6 }}>
