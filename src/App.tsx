@@ -71,15 +71,16 @@ function QuizBlock({
 }
 
 function HomePage({ onOpenLesson }: { onOpenLesson: (n: number) => void }) {
+  const liveItems = useMemo(() => syllabus.filter((item) => LIVE_LESSONS.has(item.n)), []);
   const units = useMemo(() => {
     const map = new Map<string, SyllabusItem[]>();
-    for (const item of syllabus) {
+    for (const item of liveItems) {
       const list = map.get(item.unit) ?? [];
       list.push(item);
       map.set(item.unit, list);
     }
     return Array.from(map.entries());
-  }, []);
+  }, [liveItems]);
 
   return (
     <div>
@@ -102,47 +103,33 @@ function HomePage({ onOpenLesson }: { onOpenLesson: (n: number) => void }) {
         </div>
       </section>
 
-      <section className="section card">
-        <div className="section-title">
-          <h2>課程進度</h2>
-          <span className="pill pill-accent">1 / {syllabus.length} 課已上線</span>
-        </div>
-        <div className="progress-bar">
-          <div className="progress-fill" style={{ width: `${(1 / syllabus.length) * 100}%` }} />
-        </div>
-      </section>
-
       <section className="section">
         <div className="section-title">
-          <h2>完整課綱（共 {syllabus.length} 課）</h2>
+          <h2>已上線課程</h2>
+          <span className="pill pill-accent">共 {liveItems.length} 課</span>
         </div>
         {units.map(([unit, items]) => (
           <div key={unit} className="unit-group">
             <div className="unit-label">{unit}</div>
             <div className="lesson-grid">
-              {items.map((item) => {
-                const live = LIVE_LESSONS.has(item.n);
-                return (
-                  <div
-                    key={item.n}
-                    className={`lesson-card ${live ? "active" : ""}`}
-                    onClick={() => live && onOpenLesson(item.n)}
-                  >
-                    <div className="lesson-top">
-                      <span>第 {item.n} 天</span>
-                      <span className={`pill ${live ? "pill-live" : ""}`}>
-                        {live ? "已上線・可練習" : "製作中"}
-                      </span>
-                    </div>
-                    <div style={{ fontWeight: 700, fontSize: 15 }}>{item.title}</div>
-                    {item.ids.length > 0 && (
-                      <div style={{ fontSize: 12, color: "var(--muted)" }}>
-                        {item.ids.length} 個句型
-                      </div>
-                    )}
+              {items.map((item) => (
+                <div
+                  key={item.n}
+                  className="lesson-card active"
+                  onClick={() => onOpenLesson(item.n)}
+                >
+                  <div className="lesson-top">
+                    <span>第 {item.n} 天</span>
+                    <span className="pill pill-live">已上線・可練習</span>
                   </div>
-                );
-              })}
+                  <div style={{ fontWeight: 700, fontSize: 15 }}>{item.title}</div>
+                  {item.ids.length > 0 && (
+                    <div style={{ fontSize: 12, color: "var(--muted)" }}>
+                      {item.ids.length} 個句型
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         ))}
