@@ -197,6 +197,13 @@ a {
   flex-wrap: wrap;
 }
 
+.social-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
 .card {
   background: var(--surface);
   border: 1.5px solid var(--border);

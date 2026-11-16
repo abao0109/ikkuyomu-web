@@ -101,6 +101,24 @@ function HomePage({ onOpenLesson }: { onOpenLesson: (n: number) => void }) {
             下載 L01 Anki 卡組 (.apkg)
           </a>
         </div>
+        <div className="social-links">
+          <a
+            className="btn btn-sm"
+            href="https://www.instagram.com/ikku.yomu/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram @ikku.yomu
+          </a>
+          <a
+            className="btn btn-sm"
+            href="https://www.threads.net/@ikku.yomu"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Threads @ikku.yomu
+          </a>
+        </div>
       </section>
 
       <section className="section">
