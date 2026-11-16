@@ -69,7 +69,7 @@ function QuizBlock({
 
   return (
     <div>
-      <div className="ja" style={{ fontWeight: 600 }}>
+      <div className="ja" style={{ fontWeight: 600, whiteSpace: "pre-line" }}>
         {questionText}
       </div>
       <div className="opts">
@@ -335,7 +335,9 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
           {L01_QUIZ.map((q) => (
             <div key={q.id} className="card" style={{ marginBottom: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                <span className="pill pill-accent">{isEn && q.labelEn ? q.labelEn : q.label}</span>
+                <span className={`pill ${q.level === "n4" ? "pill-apricot" : "pill-accent"}`}>
+                  {isEn && q.labelEn ? q.labelEn : q.label}
+                </span>
                 {q.audioClip && (
                   <button className="btn btn-sm" onClick={() => playClip(audioRef, q.audioClip!)}>
                     {isEn ? "🔊 Play Audio" : "🔊 播放聽解原聲"}
