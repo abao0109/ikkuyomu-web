@@ -199,9 +199,6 @@ function Lesson1Page({ onBack }: { onBack: () => void }) {
                   </span>
                   <span className="pill">{ex.pattern}</span>
                 </div>
-                <button className="btn btn-sm" onClick={() => playClip(audioRef, ex.clip)}>
-                  🔊 聽原聲
-                </button>
               </div>
               <div className="example-body">
                 <div>

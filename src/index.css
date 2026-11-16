@@ -394,13 +394,13 @@ a {
 .example-body {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 16px;
   align-items: center;
 }
 
 @media (min-width: 680px) {
   .example-body {
-    grid-template-columns: 1fr 240px;
+    grid-template-columns: 1fr 340px;
   }
 }
 
