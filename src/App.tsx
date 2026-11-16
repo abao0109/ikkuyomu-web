@@ -104,6 +104,14 @@ function HomePage({ onOpenLesson }: { onOpenLesson: (n: number) => void }) {
         <div className="social-links">
           <a
             className="btn btn-sm"
+            href="https://www.youtube.com/@ikkuyomu"
+            target="_blank"
+            rel="noreferrer"
+          >
+            YouTube @ikkuyomu
+          </a>
+          <a
+            className="btn btn-sm"
             href="https://www.instagram.com/ikku.yomu/"
             target="_blank"
             rel="noreferrer"
