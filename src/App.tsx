@@ -85,7 +85,9 @@ function HomePage({ onOpenLesson }: { onOpenLesson: (n: number) => void }) {
     <div>
       <section className="hero">
         <span className="hero-tag">免費動漫 JLPT N5 → N4 課程</span>
-        <h1>挑一句動漫台詞，學會一個考點</h1>
+        <h1>
+          <span className="hl">挑一句動漫台詞</span>，學會一個考點
+        </h1>
         <p>
           不背無聊的文法術語。每一課先聽動漫原聲、拆解句型與常見錯誤，再搭配即時互動練習、課後小考與
           Anki 原聲卡組，學完就能去考 JLPT N4。
@@ -204,7 +206,7 @@ function Lesson1Page({ onBack }: { onBack: () => void }) {
               <div className="example-head">
                 <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                   <span className="pill pill-accent">例句 {idx + 1}</span>
-                  <span className="pill">{ex.source}</span>
+                  <span className="pill pill-apricot">{ex.source}</span>
                   <span className="pill">{ex.pattern}</span>
                 </div>
                 <button className="btn btn-sm" onClick={() => playClip(audioRef, ex.clip)}>
