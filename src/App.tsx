@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import syllabusRaw from "./data/syllabus.json";
-import vocabRaw from "./data/l01-vocab.json";
-import { L01_EXAMPLES, L01_POINTS, L01_QUIZ, PracticeQ } from "./data/l01";
-
-type Lang = "zh" | "en";
+import { LESSONS, LIVE_LESSON_LIST } from "./data/lessons";
+import type { Lang, LessonConfig, PracticeQ } from "./data/types";
 
 interface SyllabusItem {
   n: number;
@@ -13,25 +11,16 @@ interface SyllabusItem {
   core: string | null;
 }
 
-interface VocabItem {
-  word: string;
-  kana: string;
-  zh: string;
-  en: string;
-  level: string;
-}
-
 const syllabus = syllabusRaw as SyllabusItem[];
-const vocab = vocabRaw as VocabItem[];
-const LIVE_LESSONS = new Set([1]);
+const LIVE_LESSONS = new Set(LIVE_LESSON_LIST.map((l) => l.n));
 
 const UNIT_EN: Record<string, string> = {
   "不用變化就能說": "Say It Without Conjugation",
 };
 
-const TITLE_EN: Record<number, string> = {
-  1: 'Self-Introduction: "I am..." / "I am not..."',
-};
+const TITLE_EN: Record<number, string> = Object.fromEntries(
+  LIVE_LESSON_LIST.map((l) => [l.n, l.titleEn])
+);
 
 function getInitialLang(): Lang {
   const params = new URLSearchParams(window.location.search);
@@ -42,11 +31,15 @@ function getInitialLang(): Lang {
   return "zh";
 }
 
-function playClip(audioRef: React.MutableRefObject<HTMLAudioElement | null>, clip: string) {
+function playClip(
+  audioRef: React.MutableRefObject<HTMLAudioElement | null>,
+  slug: string,
+  clip: string
+) {
   if (audioRef.current) {
     audioRef.current.pause();
   }
-  const a = new Audio(`/audio/l01/${clip}.mp3`);
+  const a = new Audio(`/audio/${slug}/${clip}.mp3`);
   audioRef.current = a;
   a.play().catch(() => {});
 }
@@ -142,9 +135,9 @@ function HomePage({ lang, onOpenLesson }: { lang: Lang; onOpenLesson: (n: number
           <button className="btn btn-primary" onClick={() => onOpenLesson(1)}>
             {isEn ? "Start Day 1: Self-Introduction →" : "開始第 1 天：自我介紹 →"}
           </button>
-          <a className="btn" href="/downloads/ikku-l01.apkg" download>
-            {isEn ? "Download L01 Anki Deck (.apkg)" : "下載 L01 Anki 卡組 (.apkg)"}
-          </a>
+          <button className="btn" onClick={() => onOpenLesson(2)}>
+            {isEn ? "Latest Day 2: This, That & Where →" : "最新第 2 天：這個、那個、哪裡 →"}
+          </button>
         </div>
         <div className="social-links">
           <a
@@ -178,7 +171,9 @@ function HomePage({ lang, onOpenLesson }: { lang: Lang; onOpenLesson: (n: number
         <div className="section-title">
           <h2>{isEn ? "Available Lessons" : "已上線課程"}</h2>
           <span className="pill pill-accent">
-            {isEn ? `${liveItems.length} lesson` : `共 ${liveItems.length} 課`}
+            {isEn
+              ? `${liveItems.length} ${liveItems.length === 1 ? "lesson" : "lessons"}`
+              : `共 ${liveItems.length} 課`}
           </span>
         </div>
         {units.map(([unit, items]) => (
@@ -213,16 +208,38 @@ function HomePage({ lang, onOpenLesson }: { lang: Lang; onOpenLesson: (n: number
   );
 }
 
-function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
+function LessonPage({
+  lesson,
+  lang,
+  onBack,
+  onOpenLesson,
+}: {
+  lesson: LessonConfig;
+  lang: Lang;
+  onBack: () => void;
+  onOpenLesson: (n: number) => void;
+}) {
   const [tab, setTab] = useState<"practice" | "quiz" | "vocab" | "anki">("practice");
   const [exAns, setExAns] = useState<Record<string, number>>({});
   const [quizAns, setQuizAns] = useState<Record<string, number>>({});
   const [hideMeaning, setHideMeaning] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
   const isEn = lang === "en";
   const quizDone = Object.keys(quizAns).length;
-  const quizScore = L01_QUIZ.filter((q) => quizAns[q.id] === q.ans).length;
+  const quizScore = lesson.quiz.filter((q) => quizAns[q.id] === q.ans).length;
+  const prevLesson = LESSONS[lesson.n - 1];
+  const nextLesson = LESSONS[lesson.n + 1];
+  const summaryTable = lesson.summaryTable;
 
   return (
     <div style={{ paddingTop: 24 }}>
@@ -234,32 +251,37 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
         <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <div>
             <span className="pill pill-live" style={{ marginBottom: 8 }}>
-              {isEn ? "Day 1 | N5 Basics" : "第 1 天｜N5 基礎"}
+              {isEn ? lesson.badgeEn : lesson.badge}
             </span>
             <h1 style={{ margin: "6px 0 4px", fontSize: 26 }}>
-              {isEn ? 'Self-Introduction: "I am..." / "I am not..."' : "自我介紹：「我是…」「我不是…」"}
+              {isEn ? lesson.titleEn : lesson.title}
             </h1>
             <p style={{ margin: 0, color: "var(--muted)", fontSize: 14 }}>
-              {isEn
-                ? "Focus: は · だ / です · ではない / じゃない · か · も (5 patterns + 26 words)"
-                : "本課重點：は・だ／です・ではない／じゃない・か・も（共 5 個句型 + 26 個單字）"}
+              {isEn ? lesson.focusEn : lesson.focus}
             </p>
           </div>
-          <a className="btn btn-primary" href="/downloads/ikku-l01.apkg" download style={{ alignSelf: "center" }}>
-            {isEn ? "Download L01 Anki (.apkg)" : "下載 L01 Anki (.apkg)"}
+          <a
+            className="btn btn-primary"
+            href={`/downloads/${lesson.ankiFile}`}
+            download
+            style={{ alignSelf: "center" }}
+          >
+            {isEn ? `Download ${lesson.code} Anki (.apkg)` : `下載 ${lesson.code} Anki (.apkg)`}
           </a>
         </div>
       </div>
 
       <div className="tabs">
         <button className={`tab ${tab === "practice" ? "active" : ""}`} onClick={() => setTab("practice")}>
-          {isEn ? `Anime Examples & Practice (${L01_EXAMPLES.length})` : `動漫例句＋練習 (${L01_EXAMPLES.length})`}
+          {isEn
+            ? `Anime Examples & Practice (${lesson.examples.length})`
+            : `動漫例句＋練習 (${lesson.examples.length})`}
         </button>
         <button className={`tab ${tab === "quiz" ? "active" : ""}`} onClick={() => setTab("quiz")}>
-          {isEn ? `Lesson Quiz (${L01_QUIZ.length})` : `課後小考 (${L01_QUIZ.length} 題)`}
+          {isEn ? `Lesson Quiz (${lesson.quiz.length})` : `課後小考 (${lesson.quiz.length} 題)`}
         </button>
         <button className={`tab ${tab === "vocab" ? "active" : ""}`} onClick={() => setTab("vocab")}>
-          {isEn ? `Vocabulary (${vocab.length})` : `本課單字 (${vocab.length})`}
+          {isEn ? `Vocabulary (${lesson.vocab.length})` : `本課單字 (${lesson.vocab.length})`}
         </button>
         <button className={`tab ${tab === "anki" ? "active" : ""}`} onClick={() => setTab("anki")}>
           {isEn ? "Grammar & Anki" : "句型總表與 Anki"}
@@ -268,7 +290,7 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
 
       {tab === "practice" && (
         <div>
-          {L01_EXAMPLES.map((ex, idx) => {
+          {lesson.examples.map((ex, idx) => {
             const sourceLabel = isEn ? ex.sourceEn : ex.source;
             const episodeLabel = isEn ? ex.episodeEn : ex.episode;
             return (
@@ -292,7 +314,7 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
                     <div style={{ fontWeight: 600, marginTop: 4 }}>{isEn ? ex.en : ex.zh}</div>
                   </div>
                   <div className="example-clip">
-                    <video src={`/video/l01/${ex.clip}.mp4`} controls playsInline preload="metadata" />
+                    <video src={`/video/${lesson.slug}/${ex.clip}.mp4`} controls playsInline preload="metadata" />
                     <div className="example-clip-cap">
                       {sourceLabel}
                       {episodeLabel ? ` ${episodeLabel}` : ""}
@@ -318,12 +340,22 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
 
       {tab === "quiz" && (
         <div>
-          <div className="card" style={{ marginBottom: 16, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
+          <div
+            className="card"
+            style={{
+              marginBottom: 16,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 10,
+            }}
+          >
             <div>
               <strong>{isEn ? "Quiz Progress: " : "小考進度："}</strong>
               {isEn
-                ? `${quizDone} / ${L01_QUIZ.length} answered (${quizScore} correct)`
-                : `${quizDone} / ${L01_QUIZ.length} 題（目前答對 ${quizScore} 題）`}
+                ? `${quizDone} / ${lesson.quiz.length} answered (${quizScore} correct)`
+                : `${quizDone} / ${lesson.quiz.length} 題（目前答對 ${quizScore} 題）`}
             </div>
             {quizDone > 0 && (
               <button className="btn btn-sm" onClick={() => setQuizAns({})}>
@@ -332,14 +364,14 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
             )}
           </div>
 
-          {L01_QUIZ.map((q) => (
+          {lesson.quiz.map((q) => (
             <div key={q.id} className="card" style={{ marginBottom: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
                 <span className={`pill ${q.level === "n4" ? "pill-apricot" : "pill-accent"}`}>
                   {isEn && q.labelEn ? q.labelEn : q.label}
                 </span>
                 {q.audioClip && (
-                  <button className="btn btn-sm" onClick={() => playClip(audioRef, q.audioClip!)}>
+                  <button className="btn btn-sm" onClick={() => playClip(audioRef, lesson.slug, q.audioClip!)}>
                     {isEn ? "🔊 Play Audio" : "🔊 播放聽解原聲"}
                   </button>
                 )}
@@ -358,7 +390,11 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
       {tab === "vocab" && (
         <div className="card">
           <div className="section-title" style={{ marginBottom: 12 }}>
-            <h2>{isEn ? "Lesson 1 Vocabulary (N5 / N4)" : "第 1 課單字表（N5 / N4）"}</h2>
+            <h2>
+              {isEn
+                ? `Lesson ${lesson.n} Vocabulary (N5 / N4)`
+                : `第 ${lesson.n} 課單字表（N5 / N4）`}
+            </h2>
             <button className="btn btn-sm" onClick={() => setHideMeaning((v) => !v)}>
               {isEn
                 ? hideMeaning
@@ -379,7 +415,7 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
               </tr>
             </thead>
             <tbody>
-              {vocab.map((v) => (
+              {lesson.vocab.map((v) => (
                 <tr key={v.word + v.kana}>
                   <td className="ja" style={{ fontWeight: 700, fontSize: 17 }}>
                     {v.word}
@@ -400,8 +436,42 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
 
       {tab === "anki" && (
         <div>
+          {summaryTable && (
+            <div className="card" style={{ marginBottom: 20 }}>
+              <h2 style={{ marginTop: 0, marginBottom: summaryTable.subtitle ? 4 : 12 }}>
+                {isEn ? summaryTable.titleEn : summaryTable.title}
+              </h2>
+              {(isEn ? summaryTable.subtitleEn : summaryTable.subtitle) && (
+                <p style={{ marginTop: 0, marginBottom: 14, color: "var(--muted)", fontSize: 14 }}>
+                  {isEn ? summaryTable.subtitleEn : summaryTable.subtitle}
+                </p>
+              )}
+              <div className="table-scroll">
+                <table className="summary-table ja">
+                  <thead>
+                    <tr>
+                      {(isEn ? summaryTable.headersEn : summaryTable.headers).map((h) => (
+                        <th key={h}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {summaryTable.rows.map((row) => (
+                      <tr key={row.label}>
+                        <th>{isEn ? row.labelEn : row.label}</th>
+                        {row.cells.map((cell, i) => (
+                          <td key={i}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           <div className="point-grid" style={{ marginBottom: 20 }}>
-            {L01_POINTS.map((p) => (
+            {lesson.points.map((p) => (
               <div key={p.id} className="card">
                 <div style={{ fontWeight: 700, fontSize: 17, marginBottom: 4 }}>
                   {isEn ? p.titleEn : p.title}
@@ -422,25 +492,48 @@ function Lesson1Page({ lang, onBack }: { lang: Lang; onBack: () => void }) {
 
           <div className="card">
             <h2 style={{ marginTop: 0 }}>
-              {isEn ? "Download L01 Anki Audio Deck" : "下載 L01 Anki 原聲卡組"}
+              {isEn ? `Download ${lesson.code} Anki Audio Deck` : `下載 ${lesson.code} Anki 原聲卡組`}
             </h2>
             <p style={{ color: "var(--muted)" }}>
               {isEn ? (
                 <>
-                  Includes <strong>15 anime sentence cards</strong> (with original Japanese audio) +{" "}
-                  <strong>26 N5/N4 vocabulary cards</strong>. Double-click the <code>.apkg</code> file in Anki on desktop or mobile to import.
+                  Includes <strong>{lesson.ankiSentenceCount} anime sentence cards</strong> (with original Japanese audio) +{" "}
+                  <strong>{lesson.vocab.length} N5/N4 vocabulary cards</strong>. Double-click the <code>.apkg</code> file in Anki on desktop or mobile to import.
                 </>
               ) : (
                 <>
-                  內含 <strong>15 句動漫原聲例句卡</strong>（附日語配音檔）＋{" "}
-                  <strong>26 張 N5/N4 單字卡</strong>。下載後在電腦或手機 Anki 點兩下 `.apkg` 即可直接匯入複習。
+                  內含 <strong>{lesson.ankiSentenceCount} 句動漫原聲例句卡</strong>（附日語配音檔）＋{" "}
+                  <strong>{lesson.vocab.length} 張 N5/N4 單字卡</strong>。下載後在電腦或手機 Anki 點兩下 <code>.apkg</code> 即可直接匯入複習。
                 </>
               )}
             </p>
-            <a className="btn btn-primary" href="/downloads/ikku-l01.apkg" download>
-              {isEn ? "Download ikku-l01.apkg (480 KB)" : "下載 ikku-l01.apkg (480 KB)"}
+            <a className="btn btn-primary" href={`/downloads/${lesson.ankiFile}`} download>
+              {isEn
+                ? `Download ${lesson.ankiFile} (${lesson.ankiSizeKb} KB)`
+                : `下載 ${lesson.ankiFile} (${lesson.ankiSizeKb} KB)`}
             </a>
           </div>
+        </div>
+      )}
+
+      {(prevLesson || nextLesson) && (
+        <div className="lesson-footer-nav">
+          {prevLesson ? (
+            <button className="btn" onClick={() => onOpenLesson(prevLesson.n)}>
+              {isEn
+                ? `← Day ${prevLesson.n}: ${prevLesson.titleEn}`
+                : `← 第 ${prevLesson.n} 天：${prevLesson.title}`}
+            </button>
+          ) : (
+            <div />
+          )}
+          {nextLesson && (
+            <button className="btn btn-primary" onClick={() => onOpenLesson(nextLesson.n)}>
+              {isEn
+                ? `Day ${nextLesson.n}: ${nextLesson.titleEn} →`
+                : `第 ${nextLesson.n} 天：${nextLesson.title} →`}
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -488,6 +581,8 @@ export default function App() {
   };
 
   const isEn = lang === "en";
+  const activeLesson = lesson !== null ? LESSONS[lesson] : undefined;
+  const latestLessonNum = LIVE_LESSON_LIST[LIVE_LESSON_LIST.length - 1]?.n;
 
   return (
     <div>
@@ -501,9 +596,19 @@ export default function App() {
             <button className="btn btn-sm" onClick={() => navigate(null)}>
               {isEn ? "Lessons" : "課程總覽"}
             </button>
-            <button className="btn btn-sm btn-primary" onClick={() => navigate(1)}>
-              {isEn ? "L01 Practice & Quiz" : "L01 練習＆小考"}
-            </button>
+            {LIVE_LESSON_LIST.map((l) => {
+              const isHighlighted = activeLesson ? activeLesson.n === l.n : l.n === latestLessonNum;
+              return (
+                <button
+                  key={l.n}
+                  className={`btn btn-sm ${isHighlighted ? "btn-primary" : ""}`}
+                  onClick={() => navigate(l.n)}
+                  title={isEn ? l.titleEn : l.title}
+                >
+                  {l.code}
+                </button>
+              );
+            })}
             <button className="btn btn-sm" onClick={toggleLang} aria-label="Switch language">
               {isEn ? "中文" : "EN"}
             </button>
@@ -512,8 +617,14 @@ export default function App() {
       </header>
 
       <main className="container">
-        {lesson === 1 ? (
-          <Lesson1Page lang={lang} onBack={() => navigate(null)} />
+        {activeLesson ? (
+          <LessonPage
+            key={activeLesson.n}
+            lesson={activeLesson}
+            lang={lang}
+            onBack={() => navigate(null)}
+            onOpenLesson={(n) => navigate(n)}
+          />
         ) : (
           <HomePage lang={lang} onOpenLesson={(n) => navigate(n)} />
         )}

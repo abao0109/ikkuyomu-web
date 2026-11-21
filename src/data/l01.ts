@@ -1,53 +1,14 @@
-export interface PracticeQ {
-  q: string;
-  qEn?: string;
-  opts: string[];
-  optsEn?: string[];
-  ans: number;
-  why: string;
-  whyEn?: string;
-}
+import l01Vocab from "./l01-vocab.json";
+import type {
+  ExampleItem,
+  GrammarPoint,
+  LessonConfig,
+  PracticeQ,
+  QuizQuestion,
+  VocabItem,
+} from "./types";
 
-export interface ExampleItem {
-  clip: string;
-  source: string;
-  sourceEn: string;
-  episode?: string;
-  episodeEn?: string;
-  ja: string;
-  kana: string;
-  zh: string;
-  en: string;
-  pattern: string;
-  practice: PracticeQ;
-}
-
-export interface QuizQuestion {
-  id: string;
-  label: string;
-  labelEn?: string;
-  level?: "n4";
-  q: string;
-  qEn?: string;
-  audioClip?: string;
-  opts: string[];
-  optsEn?: string[];
-  ans: number;
-  why: string;
-  whyEn?: string;
-}
-
-export interface GrammarPoint {
-  id: string;
-  title: string;
-  titleEn: string;
-  frame: string;
-  frameEn: string;
-  summary: string;
-  summaryEn: string;
-  mistake: string;
-  fix: string;
-}
+export type { ExampleItem, GrammarPoint, PracticeQ, QuizQuestion };
 
 export const L01_POINTS: GrammarPoint[] = [
   {
@@ -453,3 +414,22 @@ export const L01_QUIZ: QuizQuestion[] = [
     whyEn: "The line is 「あの男も同罪だ」— notice も ('too') and だ.",
   },
 ];
+
+export const L01_LESSON: LessonConfig = {
+  n: 1,
+  slug: "l01",
+  code: "L01",
+  badge: "第 1 天｜N5 基礎",
+  badgeEn: "Day 1 | N5 Basics",
+  title: "自我介紹：「我是…」「我不是…」",
+  titleEn: 'Self-Introduction: "I am..." / "I am not..."',
+  focus: "本課重點：は・だ／です・ではない／じゃない・か・も（共 5 個句型 + 26 個單字）",
+  focusEn: "Focus: は · だ / です · ではない / じゃない · か · も (5 patterns + 26 words)",
+  ankiFile: "ikku-l01.apkg",
+  ankiSizeKb: 480,
+  ankiSentenceCount: 15,
+  points: L01_POINTS,
+  examples: L01_EXAMPLES,
+  quiz: L01_QUIZ,
+  vocab: l01Vocab as VocabItem[],
+};

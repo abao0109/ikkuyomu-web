@@ -1,0 +1,184 @@
+[
+  {
+    "word": "あそこ",
+    "kana": "あそこ",
+    "en": "over there",
+    "level": "N5",
+    "zh": "那裡"
+  },
+  {
+    "word": "あれ",
+    "kana": "あれ",
+    "en": "that",
+    "level": "N5",
+    "zh": "那個"
+  },
+  {
+    "word": "お手洗い",
+    "kana": "おてあらい",
+    "en": "bathroom",
+    "level": "N5",
+    "zh": "洗手間、廁所"
+  },
+  {
+    "word": "北",
+    "kana": "きた",
+    "en": "North",
+    "level": "N5",
+    "zh": "北方、北邊"
+  },
+  {
+    "word": "ここ",
+    "kana": "ここ",
+    "en": "Here",
+    "level": "N5",
+    "zh": "這裡"
+  },
+  {
+    "word": "こちら",
+    "kana": "こちら",
+    "en": "this person or way",
+    "level": "N5",
+    "zh": "這邊、這位"
+  },
+  {
+    "word": "こっち",
+    "kana": "こっち",
+    "en": "this person or way",
+    "level": "N5",
+    "zh": "這邊"
+  },
+  {
+    "word": "この",
+    "kana": "この",
+    "en": "This",
+    "level": "N5",
+    "zh": "這個"
+  },
+  {
+    "word": "これ",
+    "kana": "これ",
+    "en": "This",
+    "level": "N5",
+    "zh": "這個"
+  },
+  {
+    "word": "財布",
+    "kana": "さいふ",
+    "en": "Wallet",
+    "level": "N5",
+    "zh": "錢包"
+  },
+  {
+    "word": "そこ",
+    "kana": "そこ",
+    "en": "that place",
+    "level": "N5",
+    "zh": "那裡"
+  },
+  {
+    "word": "そちら",
+    "kana": "そちら",
+    "en": "over there",
+    "level": "N5",
+    "zh": "那邊、您那邊"
+  },
+  {
+    "word": "それ",
+    "kana": "それ",
+    "en": "that",
+    "level": "N5",
+    "zh": "那個"
+  },
+  {
+    "word": "出口",
+    "kana": "でぐち",
+    "en": "exit",
+    "level": "N5",
+    "zh": "出口"
+  },
+  {
+    "word": "トイレ",
+    "kana": "トイレ",
+    "en": "toilet",
+    "level": "N5",
+    "zh": "廁所"
+  },
+  {
+    "word": "どこ",
+    "kana": "どこ",
+    "en": "where",
+    "level": "N5",
+    "zh": "哪裡"
+  },
+  {
+    "word": "ノート",
+    "kana": "ノート",
+    "en": "notebook,exercise book",
+    "level": "N5",
+    "zh": "筆記本"
+  },
+  {
+    "word": "箱",
+    "kana": "はこ",
+    "en": "box",
+    "level": "N5",
+    "zh": "盒子、箱子"
+  },
+  {
+    "word": "ハンカチ",
+    "kana": "ハンカチ",
+    "en": "handkerchief",
+    "level": "N5",
+    "zh": "手帕"
+  },
+  {
+    "word": "百",
+    "kana": "ひゃく",
+    "en": "hundred",
+    "level": "N5",
+    "zh": "一百"
+  },
+  {
+    "word": "ペン",
+    "kana": "ペン",
+    "en": "pen",
+    "level": "N5",
+    "zh": "筆、鋼筆"
+  },
+  {
+    "word": "ボールペン",
+    "kana": "ボールペン",
+    "en": "ball-point pen",
+    "level": "N5",
+    "zh": "原子筆"
+  },
+  {
+    "word": "本",
+    "kana": "ほん",
+    "en": "book",
+    "level": "N5",
+    "zh": "書、書本"
+  },
+  {
+    "word": "万",
+    "kana": "まん",
+    "en": "ten thousand",
+    "level": "N5",
+    "zh": "一萬"
+  },
+  {
+    "word": "場所",
+    "kana": "ばしょ",
+    "en": "location",
+    "level": "N4",
+    "zh": "地點、場所"
+  },
+  {
+    "word": "ビル",
+    "kana": "ビル",
+    "en": "building or bill",
+    "level": "N4",
+    "zh": "大樓"
+  }
+]

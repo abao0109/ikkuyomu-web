@@ -503,6 +503,47 @@ a {
   color: var(--muted);
 }
 
+.table-scroll {
+  overflow-x: auto;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 10px 12px;
+  border-bottom: 1px dashed var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.summary-table thead th {
+  font-size: 13px;
+  color: var(--muted);
+  border-bottom: 1.5px solid var(--border);
+}
+
+.summary-table tbody th {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.summary-table tbody td {
+  font-weight: 600;
+}
+
+.lesson-footer-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
 .footer {
   margin-top: 56px;
   padding: 26px 0 40px;
